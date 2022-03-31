@@ -6,9 +6,21 @@
 При неудачной попытке войти в систему, программа сообщит пользователю, что введенные данные не верны
 
 ![image](https://user-images.githubusercontent.com/53102064/161010539-25b8fabc-587e-4ad9-9ee6-71a9119478a6.png)
+![image](https://user-images.githubusercontent.com/53102064/161033655-4ed3a009-c840-428e-be37-e73852df829b.png)
+
 
 ## Окно главного меню
 
 При удачной авторизации пользователь попадает на окно главного меню, откуда пользователь может в дальнейшем попасть в другие окна с функционалом взаимодействия с базой данных
 
+![image](https://user-images.githubusercontent.com/53102064/161033565-e485b131-8636-4bcd-ac83-8ca16c1a4b3a.png)
+
+## Окно с работниками компании
+
+На этом окне можно производить работу с работниками, изменять их данные в базе данных, добавлять новых работников, а так же удобно сортировать их
+
+![image](https://user-images.githubusercontent.com/53102064/161033750-09140372-c46c-4d5e-b18e-7a43f640a9da.png)
+![image](https://user-images.githubusercontent.com/53102064/161034381-94ddc6c6-7bb0-464d-a69c-52fd7ead25e8.png)
+![image](https://user-images.githubusercontent.com/53102064/161034351-8ee62aad-8dd9-4451-b8f5-194ba545b850.png)
+![image](https://user-images.githubusercontent.com/53102064/161034446-b5bd8e77-64a7-4395-91d8-d0902ed2fec8.png)
 
