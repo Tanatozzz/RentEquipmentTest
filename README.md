@@ -13,7 +13,7 @@
 
 При удачной авторизации пользователь попадает на окно главного меню, откуда пользователь может в дальнейшем попасть в другие окна с функционалом взаимодействия с базой данных
 
-![image](https://user-images.githubusercontent.com/53102064/161033565-e485b131-8636-4bcd-ac83-8ca16c1a4b3a.png)
+![image](https://user-images.githubusercontent.com/53102064/161448437-627ad82d-a5f8-4ee8-81f7-d0ea9ef1b154.png)
 
 ## Окно с работниками компании
 
@@ -33,4 +33,9 @@
 ![image](https://user-images.githubusercontent.com/53102064/161429328-0443b3ad-3416-4d2f-b65c-77e341eb697b.png)
 ![image](https://user-images.githubusercontent.com/53102064/161429344-102b0785-0644-4a67-bd20-c143ff27b61c.png)
 ![image](https://user-images.githubusercontent.com/53102064/161429354-4990aad4-5c53-4761-b2ee-e55f9f769f97.png)
+
+## Выдача оборудования
+
+![image](https://user-images.githubusercontent.com/53102064/161448482-2db3e5b9-8a71-43b6-aeb2-7088e2b4a9c3.png)
+![image](https://user-images.githubusercontent.com/53102064/161448492-64bff660-d4ef-4238-8f47-8c8bb7c9336a.png)
 
