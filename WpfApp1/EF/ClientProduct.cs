@@ -18,7 +18,11 @@ namespace WpfApp1.EF
         public int IDClient { get; set; }
         public int IDStaff { get; set; }
         public System.DateTime DateOfIssue { get; set; }
+        public Nullable<System.DateTime> DateStart { get; set; }
+        public Nullable<System.DateTime> DateEnd { get; set; }
         public int IDProduct { get; set; }
+        public bool isDeleted { get; set; }
+        public Nullable<decimal> TotalCost { get; set; }
     
         public virtual Client Client { get; set; }
         public virtual Product Product { get; set; }

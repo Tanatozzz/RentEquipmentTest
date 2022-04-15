@@ -26,6 +26,7 @@ namespace WpfApp1.EF
         public decimal Price { get; set; }
         public System.DateTime Warranty { get; set; }
         public int IDStatus { get; set; }
+        public bool isDeleted { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ClientProduct> ClientProduct { get; set; }

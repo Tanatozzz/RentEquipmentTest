@@ -63,7 +63,7 @@
         <Button
             Grid.Column="1"
             Grid.Row="2"
-            Content="Выданное оборудование"
+            Content="Выдать оборудованние"
             Width="220"
             Height="50"
             Template="{StaticResource ButtonTemplate}" Click="Button_Click"

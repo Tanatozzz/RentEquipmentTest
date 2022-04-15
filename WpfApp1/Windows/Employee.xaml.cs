@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WpfApp1.EF;
 
 namespace WpfApp1.Windows
 {
@@ -19,72 +20,66 @@ namespace WpfApp1.Windows
     /// </summary>
     public partial class Employee : Window
     {
+        List<string> ListSort = new List<string>()
+        {
+        "По умолчанию","По фамилии","По имени","По телефону","По почте","По должности"
+        };
         public Employee()
         {
             InitializeComponent();
             Filter();
-            cmbSort.ItemsSource = listSort;
+            lvStaff.ItemsSource = ClassHelper.Class1.Context.Employee.ToList();
+            cmbSort.ItemsSource = ListSort;
             cmbSort.SelectedIndex = 0;
         }
-        List<string> listSort = new List<string>()
+        //добавление
+
+        private void btnStaffAdd_Click(object sender, RoutedEventArgs e)
         {
-            "По умолчанию",
-            "По фамилии",
-            "По имени",
-            "По электронной почте",
-            "По должности"
-        };
+            EmployeeAdd staffAddWindow = new EmployeeAdd();
+            staffAddWindow.ShowDialog();
+            lvStaff.ItemsSource = ClassHelper.Class1.Context.Employee.ToList();
+            Filter();
+        }
+
         private void Filter()
         {
-            List<EF.Employee> listEmployee = new List<EF.Employee>();
-
-            listEmployee = ClassHelper.Class1.Context.Employee.ToList();
-
-            // поиск
-            listEmployee = listEmployee.
-                Where(i => i.LastName.ToLower().Contains(txtSearch.Text.ToLower())
-                || i.FirstName.ToLower().Contains(txtSearch.Text.ToLower())
-                || i.MiddleName.ToLower().Contains(txtSearch.Text.ToLower())
-                || i.FIO.ToLower().Contains(txtSearch.Text.ToLower())
-                || i.Phone.ToLower().Contains(txtSearch.Text.ToLower())
-                || i.Email.ToLower().Contains(txtSearch.Text.ToLower())).
-                ToList();
-
-            // сортировка
+            List<EF.Employee> ListStaff = new List<EF.Employee>();
+            ListStaff = ClassHelper.Class1.Context.Employee.Where(i => i.isDeleted == false).ToList();
+            //Фильтрация
+            ListStaff = ListStaff.Where(i =>
+            i.LastName.ToLower().Contains(txtSearch.Text.ToLower()) ||
+            i.FirstName.ToLower().Contains(txtSearch.Text.ToLower()) ||
+            i.MiddleName.ToLower().Contains(txtSearch.Text.ToLower()) ||
+            i.FIO.ToLower().Contains(txtSearch.Text.ToLower()) ||
+            i.Phone.ToLower().Contains(txtSearch.Text.ToLower()) ||
+            i.Email.ToLower().Contains(txtSearch.Text.ToLower())).ToList();
 
             switch (cmbSort.SelectedIndex)
             {
                 case 0:
-                    listEmployee = listEmployee.OrderBy(i => i.ID).ToList();
+                    ListStaff = ListStaff.OrderBy(i => i.ID).ToList();
                     break;
-
                 case 1:
-                    listEmployee = listEmployee.OrderBy(i => i.LastName).ToList();
+                    ListStaff = ListStaff.OrderBy(i => i.LastName).ToList();
                     break;
-
                 case 2:
-                    listEmployee = listEmployee.OrderBy(i => i.FirstName).ToList();
+                    ListStaff = ListStaff.OrderBy(i => i.FirstName).ToList();
                     break;
-
                 case 3:
-                    listEmployee = listEmployee.OrderBy(i => i.Email).ToList();
+                    ListStaff = ListStaff.OrderBy(i => i.Phone).ToList();
                     break;
-
                 case 4:
-                    listEmployee = listEmployee.OrderBy(i => i.IDRole).ToList();
+                    ListStaff = ListStaff.OrderBy(i => i.Email).ToList();
                     break;
-
+                case 5:
+                    ListStaff = ListStaff.OrderBy(i => i.IDRole).ToList();
+                    break;
                 default:
-                    listEmployee = listEmployee.OrderBy(i => i.ID).ToList();
+                    ListStaff = ListStaff.OrderBy(i => i.ID).ToList();
                     break;
             }
-
-            lvEmployee.ItemsSource = listEmployee;
-        }
-
-        private void txtSearch_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            Filter();
+            lvStaff.ItemsSource = ListStaff;
         }
 
         private void cmbSort_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -92,25 +87,31 @@ namespace WpfApp1.Windows
             Filter();
         }
 
-        private void lvEmployee_KeyDown(object sender, KeyEventArgs e)
+        private void txtSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Filter();
+        }
+
+        //Удаление
+
+        private void lvStaff_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Delete || e.Key == Key.Back)
             {
-                var resClick = MessageBox.Show("Удалить пользователя?", "Подтверждение", MessageBoxButton.YesNo, MessageBoxImage.Question);
-
-                if (resClick == MessageBoxResult.No)
-                {
-                    return;
-                }
-
                 try
                 {
-                    if (lvEmployee.SelectedItem is EF.Employee)
+                    if (lvStaff.SelectedItem is EF.Employee)
                     {
-                        var empl = lvEmployee.SelectedItem as EF.Employee;
-                        ClassHelper.Class1.Context.Employee.Remove(empl);
+                        var resmsg = MessageBox.Show("Удалить пользователя?", "Удаление", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                        if (resmsg == MessageBoxResult.No)
+                        {
+                            return;
+                        }
+                        var stf = lvStaff.SelectedItem as EF.Employee;
+                        stf.isDeleted = true;
+                        //ClassHelper.AppData.Context.Staff.Remove(stf);
                         ClassHelper.Class1.Context.SaveChanges();
-                        MessageBox.Show("Пользователь успешно удален", "Готово", MessageBoxButton.OK, MessageBoxImage.Information);
+                        MessageBox.Show("Пользователь успешно удален", "Удаление", MessageBoxButton.OK, MessageBoxImage.Information);
                         Filter();
                     }
                 }
@@ -118,26 +119,17 @@ namespace WpfApp1.Windows
                 {
                     MessageBox.Show(ex.Message.ToString());
                 }
-
             }
         }
 
-        private void button_Click(object sender, RoutedEventArgs e)
+        private void lvStaff_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            EmployeeAdd EmployeeAdd = new EmployeeAdd();
-            EmployeeAdd.ShowDialog();
-            Filter();
-        }
-        private void lvEmployee_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            if (lvEmployee.SelectedItem is EF.Employee)
+            if (lvStaff.SelectedItem is EF.Employee)
             {
-                var empl = lvEmployee.SelectedItem as EF.Employee;
-
-                EmployeeAdd addEmployeeWindow = new EmployeeAdd(empl);
-                addEmployeeWindow.ShowDialog();
+                var stf = lvStaff.SelectedItem as EF.Employee;
+                EmployeeAdd staffAddWindow = new EmployeeAdd(stf);
+                staffAddWindow.ShowDialog();
                 Filter();
-
             }
         }
     }

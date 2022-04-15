@@ -8,6 +8,6 @@ namespace WpfApp1.ClassHelper
 {
     internal class Class1
     {
-        public static EF.RentEquipmentEntities Context { get; } = new EF.RentEquipmentEntities();
+        public static EF.RentEquipmentEntities1 Context { get; } = new EF.RentEquipmentEntities1();
     }
 }

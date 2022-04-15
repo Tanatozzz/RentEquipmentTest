@@ -16,6 +16,7 @@
                     <GridViewColumn Header="Арендованный продукт" Width="150" DisplayMemberBinding="{Binding Product.NameProduct}"></GridViewColumn>
                     <GridViewColumn Header="Сотрудник выдавший продукт" Width="150" DisplayMemberBinding="{Binding Employee.LastName}"></GridViewColumn>
                     <GridViewColumn Header="Дата выдачи продукта" Width="150" DisplayMemberBinding="{Binding DateOfIssue}"></GridViewColumn>
+                    <GridViewColumn Header="Удаленно" Width="150" DisplayMemberBinding="{Binding isDeleted}"></GridViewColumn>
                 </GridView>
             </ListView.View>
         </ListView>

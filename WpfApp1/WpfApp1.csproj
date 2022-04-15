@@ -105,12 +105,6 @@
     <Compile Include="EF\Role.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="EF\sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EF\sp_helpdiagrams_Result.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="EF\Status.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -126,17 +120,34 @@
     <Compile Include="Windows\EmployeeAdd.xaml.cs">
       <DependentUpon>EmployeeAdd.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\EquipRentWindow.xaml.cs">
+      <DependentUpon>EquipRentWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\EquipmentAdd.xaml.cs">
+      <DependentUpon>EquipmentAdd.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\ListClient.xaml.cs">
       <DependentUpon>ListClient.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\ReceivingEquipment.xaml.cs">
       <DependentUpon>ReceivingEquipment.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\Verst.xaml.cs">
+      <DependentUpon>Verst.xaml</DependentUpon>
+    </Compile>
     <Page Include="Windows\Employee.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\EmployeeAdd.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\EquipRentWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\EquipmentAdd.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -181,6 +192,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Windows\Verst.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -218,10 +233,13 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Pages\" />
-    <Folder Include="Res\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Res\user2.png" />
+    <Resource Include="Res\userDef.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="EF\Model1.Context.tt">

@@ -50,7 +50,7 @@ namespace WpfApp1.Windows
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            EquipmentDelivery rentequip = new EquipmentDelivery();
+            EquipRentWindow rentequip = new EquipRentWindow();
             this.Hide();
             rentequip.ShowDialog();
             this.Show();
